@@ -1,0 +1,37 @@
+.cart{
+  border: 2px solid blue;
+  box-sizing: border-box;
+  width: 200px;
+  height: 300px;
+
+}
+.cart>h3{
+  text-align: center;
+  margin-top: 60Px;
+  font-family: "Bauhaus 93";
+}
+.cart>div{
+  margin: 50px 20px 0px 20px;
+  background: #b3d4fc;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid blue;
+}
+
+.cart>p{
+  margin-top: 50px;
+  text-align: center;
+}
+
+.box{
+  width: 700px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.body_box{
+  display: flex;
+  justify-content: center;
+}
