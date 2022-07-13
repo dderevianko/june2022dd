@@ -1,0 +1,52 @@
+.back_f{
+  background: #b3d4fc;
+}
+.back_l{
+  background: #1c5c9b;
+}
+.father{
+  width: 800px;
+  height: 1200px;
+  margin: auto;
+}
+.top{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  padding: 20px;
+}
+.for_search{
+  width: 200px;
+  height: 50px;
+  border-radius: 10px;
+}
+img{
+  height: 65px;
+  width: 65px;
+}
+.in{
+height: 500px;
+}
+
+.bot {
+  height: 200px;
+  position: relative;
+}
+.start{
+  width: 100%;
+  position: absolute;
+  bottom: 125px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.box{
+  background: #42429a;
+  height: 150px;
+  width: 150px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border: 1px solid white;
+  border-radius: 10px;
+}
