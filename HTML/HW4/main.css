@@ -1,0 +1,51 @@
+.stand{
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 20px;
+  border: 2px solid white;
+  box-sizing: border-box;
+}
+.father{
+  min-width: 576px;
+  max-width: 1020px;
+  height: auto;
+  margin: auto;
+}
+.bc{
+  display: flex;
+  width: 100%;
+}
+.A{
+  width: 100%;
+  background: #b3d4fc;
+}
+.b{
+  width: 75%;
+  background: #42429a;
+}
+.c{
+  width: 25%;
+  background: #9c98b2;
+}
+
+@media screen and (max-width: 650px){
+.stand{
+  font-size: 15px;
+  font-family: Calibri;
+}
+  .bc{
+  flex-direction: column;
+}
+.father{
+  height: 576px;
+}
+.b{
+  width: 100%;
+}
+.c{
+  width: 100%;
+}
+}
