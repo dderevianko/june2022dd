@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8">
+  <title>mini_proj</title>
+  <link rel="stylesheet" href="normal.css">
+</head>
+<style>
+  .div3f{ width: 1000px; margin: auto; border: solid 1px black;background: #b3d4fc}
+  .inf_post{margin-left: 20px}
+  .p{margin-left: 20px}
+  .div_all_com{display: flex; flex-wrap: wrap ; justify-content: space-around}
+  .cart_com{width: 23%; min-height: 300px;box-sizing: border-box;border: #1c5c9b 1px solid; margin: 5px;background: white}
+  .head_com{text-align: center;margin: 7px;height: 30%; background: #b3d4fc; }
+  .com_text{text-align: center; margin: 5px}
+
+</style>
+<body>
+<script>
+  let div3_box = document.createElement('div')
+  document.body.appendChild(div3_box)
+  div3_box.classList.add('div3f')
+
+  let itm_post = localStorage.getItem('post')
+  let inf_post = JSON.parse(itm_post)
+
+  let div_inf_post = document.createElement('div')
+  div3_box.appendChild(div_inf_post)
+  div_inf_post.classList.add('inf_post')
+
+  let p = document.createElement('h4')
+  div_inf_post.appendChild(p)
+  p.innerText = 'title: '+inf_post.title+
+  '\n\n inf: '+ inf_post.body
+
+  let div_comment = document.createElement('div')
+  div3_box.appendChild(div_comment)
+  div_comment.classList.add('div_all_com')
+
+  fetch('https://jsonplaceholder.typicode.com/posts/'+inf_post.id+'/comments')
+  .then(resp => resp.json())
+  .then (comments => comments.forEach(comment =>{
+  let div_com = document.createElement('div')
+    div_comment.appendChild(div_com)
+    div_com.classList.add('cart_com')
+
+    let inf_com = document.createElement('h5')
+    div_com.appendChild(inf_com)
+    inf_com.classList.add('head_com')
+    inf_com.innerText = 'Name: ' + comment.name + ',\n email: ' + comment.email
+
+    let par = document.createElement('p')
+    div_com.appendChild(par)
+    par.classList.add('com_text')
+    par.innerText = comment.body
+
+  }
+
+))
+</script>
+</body>
+</html>

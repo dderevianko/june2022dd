@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8">
+  <title>mini_proj</title>
+  <link rel="stylesheet" href="normal.css">
+</head>
+<style>
+  .first_div{width: 1000px;margin: auto; border: solid 2px deepskyblue; background: #b3d4fc}
+  .but_post{width: 90%; background: white; border: 2px solid deepskyblue;}
+  .but_post:hover{background: deepskyblue; width: 100%}
+  .div_button{display: flex;justify-content: center; align-items: center; padding: 10px}
+  p{ margin-left: 20px }
+  .div_post_comm{display: flex; flex-wrap: wrap; }
+  .div_post{display: flex;box-sizing: border-box;margin: 5px;background: lightskyblue; width: 19%; height: 200px; border: solid 1px deepskyblue;align-items: center;justify-content: space-around; flex-direction: column}
+  .post{text-align: center; height: 60%;}
+  .but_post_inf{background: white; border: 2px solid deepskyblue;}
+  .but_post_inf:hover{background: deepskyblue; width: 100%}
+</style>
+<body>
+
+<script>
+ let div_first = document.createElement('div')
+ document.body.appendChild(div_first)
+ div_first.classList.add('first_div')
+
+  let itm = localStorage.getItem ('user')
+  let my_user = JSON.parse(itm)
+
+  let div = document.createElement('div')
+  div_first.appendChild(div)
+  div.classList.add('div_inf')
+
+  let first_inf = document.createElement('p')
+ div.appendChild(first_inf)
+  first_inf.innerText =
+    'id: ' + my_user.id + ', Name: '+ my_user.name +
+    '\n Username: ' + my_user.username +
+    '\n email: ' + my_user.email+
+    '\n Address: ' + "city: "+my_user.address.city + ', street: '+ my_user.address.street +', suite: '+ my_user.address.suite+', zipcode: '+ my_user.address.zipcode+', Geo: lat-'+ my_user.address.geo.lat+' lng '+ my_user.address.geo.lng+
+    '\n Phone: ' + my_user.phone+
+    '\n Website: ' + my_user.website+
+    '\n Company: ' + my_user.company.name + ', catchPhrase: '+ my_user.company.catchPhrase + ', bs: '+ my_user.company.bs
+
+ let div_b = document.createElement('div')
+ div_first.appendChild(div_b)
+ div_b.classList.add('div_button')
+
+ let div2 = document.createElement('div')
+ div_first.appendChild(div2)
+ div2.classList.add('div_post_comm')
+
+
+ let but_post = document.createElement('button')
+ div_b.appendChild(but_post)
+ but_post.classList.add('but_post')
+  but_post.innerText = 'open posts'
+  but_post.onclick =function (x){
+    fetch('https://jsonplaceholder.typicode.com/users/'+my_user.id+'/posts')
+      .then(resp => resp.json())
+      .then(posts => posts.forEach(post =>{
+
+        let div_p = document.createElement('div')
+        div2.appendChild(div_p)
+        div_p.classList.add('div_post')
+
+        let title = document.createElement('h3')
+        div_p.appendChild(title)
+        title.innerText = post.title
+        title.classList.add('post')
+
+        let but_inf_post = document.createElement("button")
+        div_p.appendChild(but_inf_post)
+        but_inf_post.innerText = 'details info'
+        but_inf_post.classList.add('but_post_inf')
+        but_inf_post.onclick = function (x){
+          localStorage.setItem('post', JSON.stringify(post))
+          location.href = 'http://localhost:63342/june2022/mini_proj1/post_details.html?_ijt=sv5iv2lli954b0n2s4pfdvk0fl&_ij_reload=RELOAD_ON_SAVE'
+        }
+        }
+
+      ))
+  }
+</script>
+</body>
+</html>
